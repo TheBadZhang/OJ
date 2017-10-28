@@ -28,7 +28,7 @@ int main () {
 			flag = true;
 		}
 		if (flag) {
-			printf ("%d", R [a]);
+			printf ("%d ", R [a]);
 		}
 	}
 
