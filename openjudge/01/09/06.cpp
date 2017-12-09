@@ -1,51 +1,52 @@
-﻿#include <cstdio>
-#include <cmath>
+﻿#include <iostream>
+#include <string>
 
-bool
-IsViUu (int n) {
-	if (n == 1) {
-		return false;
-	}
-	if ((n%2 == 0 && n != 2)|| n%3 == 0 || n%5 == 0) {
-		return false;
-	}
-	for (int a = 2; a < sqrt (n); a += 1) {
-		if (n % a == 0) {
-			return false;
-		}
-	}
-	return true;
+bool IsPrimeNumber(int num) {
+    if (num%2 == 0 && num > 2 || num < 2) {
+        return false;
+    } else {
+        for (int a = num-1; a > 2; a -= 1) {
+            if (num % a == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
-int
-main () {
+int main(int argc, char *argv[]) {
+    /* int n;
+    while (true) {
+        std::cin >> n;
+        if (IsPrimeNumber(n))
+            std::cout << "Yes" << std::endl;
+        else 
+            std::cout << "No"  << std::endl;
+    } */
 
-	int max = 0, min = 324;
-	char list [26] = {0};
-	char temp = 0;
-	while (temp!= '\n') {
-		temp = getchar();
-		list[temp - 'a'] += 1;
-		// printf ("%c:%d", temp, list[temp-'a']);
-	}
-	for (int a = 0; a < 26; a += 1) {
-		if (list [a] > max) {
-			max = list [a];
-		}
-		if (list [a] < min) {
-			if (list [a] == 0) {
-				continue;
-			}
-			min = list [a];
-		}
-	}
-	// printf ("%d %d", max, min);
-	if (IsViUu (max-min)) {
-		printf ("Lucky Word\n%d", max - min);
-	} else {
-		printf ("No Answer\n0");
-	}
+    std::string str;
+    std::cin >> str;
 
+    int list[26] = {};
+    int maxn = 0,
+        minn = 200;
 
-	return 0;
+    for (auto a : str) {
+        if (a >= 'a' && a <= 'z')
+            list[a-'a'] += 1;
+        else if (a >= 'A' && a <= 'Z')
+            list[a-'A'] += 1;
+    }
+    for (auto a : list) {
+        if (a > maxn)
+            maxn = a;
+        else if (a < minn && a != 0)
+            minn = a;
+    }
+    if (IsPrimeNumber(maxn-minn))
+        std::cout << "Lucky Word" << '\n' << maxn - minn << std::endl;
+    else
+        std::cout << "No Answer" << '\n' << 0 << std::endl;
+
+    return 0;
 }
