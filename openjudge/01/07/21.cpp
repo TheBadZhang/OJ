@@ -4,26 +4,28 @@
 int main () {
 
 	std::string str1, str2, str3;
+
 	std::getline (std::cin, str1);
 	std::cin >> str2 >> str3;
-	int pos = 0;
-	str1 = ' ' + str1 + ' ';
-	str2 = ' ' + str2 + ' ';
-	str3 = ' ' + str3 + ' ';
+
+	int l2 = str2.size ();
+	int l3 = str3.size ();
+	int step = l2 > l3 ? l2 : l3;
+	unsigned int pos = 0;
+
 	while (std::string::npos != str1.find (str2, pos)) {
-		// std::string t;
-		// str1 >> t;
+		
 		pos = str1.find (str2, pos);
-		int length = str2.size ();
-		// if (! (str1 [pos] == ' ' && str1 [pos+length] == ' ')) {
-		// 	break;
-		// }
-		str1.erase (pos, pos + length);
-		str1.insert (pos, str3);
-		pos += length > str3.size () ? length : str3.size ();
+		if (str1 [pos+l2] != ' ' && str1 [pos+l2] != '\0' ||
+		    pos!=0 && str1 [pos-1] != ' ')
+			goto end;
+		str1.replace (pos, l2, str3);
+end:
+		pos += step;
 	}
-	std::cout << str1.substr (1, str1.size ()-1);
+	std::cout << str1;
 
 	return 0;
 }
 
+// 需注意 yours 中的 you 不能被替换
