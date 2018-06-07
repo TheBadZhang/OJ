@@ -15,6 +15,5 @@ int main () {
 
 	std::cout << gcd (a, b);
 
-
 	return 0;
 }
