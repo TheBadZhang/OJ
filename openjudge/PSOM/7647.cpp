@@ -8,7 +8,7 @@ int main() {
 		int a1 = a % d;
 		int b1 = b % d;
 		int c1 = c % d;
-		if (a1 == b1 && a1 == c1 && a1 == c1) {
+		if (a1 == b1 && a1 == c1 && b1 == c1) {
 			printf ("%d", d);
 			break;
 		}
