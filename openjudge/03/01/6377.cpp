@@ -1,93 +1,57 @@
-﻿#include <vector>
+﻿#include <iostream>
 #include <string>
-#include <iostream>
 #include <algorithm>
-
-
-struct Stu {
-	// 生日相同的学生数据结构
-	std::vector<std::string> Name;
-	int month;
+using namespace std;
+//http://noi.openjudge.cn/ch0301/6377/
+//注意stu里面字符串要用string,不能用char数组，因为数组不能直接比较
+//char数组比较字典序，比较的是第一个字符
+struct stu
+{
+	string a;
+	int mon;
 	int day;
 };
-std::vector<Stu> Birth;
-// 多条生日相同
-
-
-int main() {
-
-	int n;
-	std::cin >> n;
-
-	bool flag2 = true;
-	// 检测是否有至少一个人的生日重复了
-
-	for (int a = 0; a < n; a += 1) {
-
-		std::string name;
-		int month, day;
-		bool flag = true;
-		// 检测是否有重复的数据
-		std::cin >> name >> month >> day;
-		// 输入数据
-
-		for (auto &x : Birth) {
-			if (x.month == month && x.day == day) {
-				// for (int y = 0; y < max(x.))
-				x.Name.push_back(name);
-				// 追加条目
-				flag = false;
-				flag2 = false;
+int n;
+stu s[200];
+bool myless(stu x, stu y)
+{
+	int len1 = x.a.size(), len2 = y.a.size();
+	if (x.mon != y.mon)
+		return x.mon < y.mon;
+	else if (x.mon == y.mon && x.day != y.day)
+		return x.day < y.day;
+	else if (x.mon == y.mon && x.day == y.day && len1 != len2)
+		return len1 < len2;
+	else
+		return x.a < y.a;
+}
+int main()
+{
+	cin >> n;
+	for (int i = 0; i < n; i++)
+	{
+		cin >> s[i].a >> s[i].mon >> s[i].day;
+	}
+	sort(s, s + n, myless);
+	int i = 0, flag = 0;
+	while (i < n)
+	{
+		if (s[i].mon == s[i + 1].mon && s[i].day == s[i + 1].day)
+		{
+			flag = 1;
+			cout << s[i].mon << " " << s[i].day << " " << s[i].a << " ";
+			while (i < n && s[i].mon == s[i + 1].mon && s[i].day == s[i + 1].day)
+			{
+				i++;
+				cout << s[i].a << " ";
 			}
+			cout << endl;
 		}
-
-		if (flag) {
-			// 若没有重复，则添加新条目
-			Stu sss;
-			sss.month = month;
-			sss.day = day;
-			sss.Name.push_back (name);
-			Birth.push_back(sss);
+		else
+		{
+			i++;
 		}
-		// 录入数据
 	}
-
-//// 以上步骤没有错误
-
-
-
-		auto bb = Birth.begin ();
-		auto be = Birth.end   ();
-
-		std::sort (bb, be, [](Stu a, Stu b){ return a.month < b.month; });
-		std::sort (bb, be, [](Stu a, Stu b){ return a.day   < b.day;   });
-		// 对日期进行排序
-		for (auto &a : Birth) {
-			if (a.Name.size () > 1) {
-				// 如果相同生日的人在一个以上（不包括一个）
-				flag2 = false;
-				std::sort (a.Name.begin (), a.Name.end (),
-						[](std::string a, std::string b){ 
-							return a.size () == b.size () ? a < b : a.size () < b.size (); });
-				// 对名字进行排序
-
-				std::cout << a.month << " " << a.day << " ";
-				for (auto &b : a.Name) std::cout << b << " ";
-				std::cout << "\n";
-				// 照题意输出
- 
- 			}
-		}
-	if (flag2) {
-
-		// 如果没有人的生日是重复的，则输出 None
-		std::cout << "None" << std::endl;
-	
-	}
-
-
-	return 0;
-
-
-
+	if (flag == 0)
+		cout << "None" << endl;
 }
