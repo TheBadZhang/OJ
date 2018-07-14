@@ -2,48 +2,32 @@
 #include <iostream>
 #include <string>
 
-int k = 0;
-struct L {
-	unsigned long long int n;
-	int t;
-} *l = new L [100000];
-
-bool
-less (L a, L b) {
-	return a.n < b.n ? true : false;
-}
-void
-add (unsigned long long int n) {
-	for (int a = 0; a < k; a += 1)
-		if (l [a].n == n) {
-			l [a].t += 1;
-			return ;
-		}
-
-	l [k].n = n;
-	l [k].t = 1;
-	k ++;
-}
-
+typedef unsigned long long ull;
 int main () {
 
 	int n;
 	std::cin >> n;
 
-	unsigned long long int a;
+	ull l [210000] = {0}, a, c = 0;
+
 	for (int b = 0; b < n; b += 1) {
-		scanf ("%lld", &a);
-		add (a);
+		scanf ("%lld", &l [b]);
 	}
 
-	std::sort (l, l+k, less);
+	std::sort (l, l+n, std::less <ull> ());
 
-	for (int b = 0; b < k; b += 1) {
-		printf ("%d %d\n", l [b].n, l[b].t);
+	a = l [0];
+	// bool flag = false;
+	for (int b = 0; b <= n; b ++) {
+		if (l [b] != a) {
+			printf ("%d %d\n", a, c);
+			a = l [b];
+			c = 1;
+			// flag = true;
+		} else {
+			c += 1;
+		}
 	}
-
-
-
 
 	return 0;
 }
