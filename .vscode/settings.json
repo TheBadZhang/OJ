@@ -3,5 +3,9 @@
     "C_Cpp.configurationWarnings": "Disabled",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
-    "python.pythonPath": "C:\\Users\\TheBa\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+    "python.pythonPath": "C:\\Users\\TheBa\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+    "terminal.integrated.automationShell.windows": "",
+    "files.associations": {
+        "ostream": "cpp"
+    }
 }

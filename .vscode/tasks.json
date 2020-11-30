@@ -3,7 +3,98 @@
 	"tasks": [
 		{
 			"type": "shell",
-			"label": "编译当前文件",
+			"label": "编译当前文件(Windows)",
+			"command": "g++",
+			"presentation": {
+				"echo": false,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			},
+			"options": {},
+			"args": [
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}.exe"
+			],
+			"group": "build"
+		}, {
+			"type": "shell",
+			"label": "删除当前可执行文件(Windows)",
+			"command": "rm",
+			"presentation": {
+				"echo": false,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			},
+			"options": {},
+			"args": [
+				"${fileDirname}/${fileBasenameNoExtension}.exe"
+			],
+			"group": "build"
+		}, {
+			"type": "shell",
+			"label": "编译并运行当前文件(Windows)",
+			"command": "${fileDirname}/${fileBasenameNoExtension}.exe",
+			"presentation": {
+				"echo": false,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			},
+			"args": [
+			],
+			"dependsOn": [
+				"编译当前文件(Windows)"
+			],
+			"group": "build"
+		}, {
+			"type": "shell",
+			"label": "编译当前文件运行并输入测试数据(Windows)",
+			"presentation": {
+				"echo": false,
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": true
+			},
+			"command": "Get-Content ${fileDirname}/${fileBasenameNoExtension}.in | ${fileDirname}/${fileBasenameNoExtension}.exe",
+			"args": [
+			],
+			"dependsOn": [
+				"编译当前文件(Windows)"
+			],
+			"group": "build"
+		},{
+			"type": "shell",
+			"label": "判题(Windows)",
+			"presentation": {
+				"echo": false,
+				"reveal": "always",
+				"focus": true,
+				"panel": "shared",
+				"showReuseMessage": false,
+				"clear": false
+			},
+			"command": "rm ${fileDirname}/${fileBasenameNoExtension}.exe",
+			"args": [
+			],
+			"dependsOn": [
+				"编译当前文件运行并输入测试数据(Windows)"
+			],
+			"group": "build"
+		}, {
+			"type": "shell",
+			"label": "编译当前文件(None-Windows)",
 			"command": "g++",
 			"args": [
 				"-g",
@@ -23,6 +114,8 @@
 			"label": "运行当前文件",
 			"command": "${fileDirname}/${fileBasenameNoExtension}",
 			"args": [
+			],
+			"dependsOn": [
 			],
 			"options": {
 				"cwd": "/usr/bin"

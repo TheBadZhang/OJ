@@ -3,16 +3,19 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32/bits",
+                "C:/Program Files/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
+                "C:/Program Files/mingw64/x86_64-w64-mingw32/include"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:\\Program Files\\mingw64\\bin\\gcc.exe",
+            "compilerPath": "C:/Program Files/mingw64/bin/gcc.exe",
             "intelliSenseMode": "gcc-x64",
-            "cStandard": "c18",
+            "cStandard": "c17",
             "cppStandard": "c++20"
         }
     ],
