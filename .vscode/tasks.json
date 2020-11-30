@@ -67,7 +67,7 @@
 				"showReuseMessage": false,
 				"clear": true
 			},
-			"command": "Get-Content ${fileDirname}/${fileBasenameNoExtension}.in | ${fileDirname}/${fileBasenameNoExtension}.exe",
+			"command": "Get-Content ${fileDirname}/${fileBasenameNoExtension}.in | ${fileDirname}/${fileBasenameNoExtension}.exe; rm ${fileDirname}/${fileBasenameNoExtension}.exe",
 			"args": [
 			],
 			"dependsOn": [
