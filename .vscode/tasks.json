@@ -21,7 +21,8 @@
 				"${fileDirname}/${fileBasenameNoExtension}.exe"
 			],
 			"group": "build"
-		}, {
+		},
+		{
 			"type": "shell",
 			"label": "删除当前可执行文件(Windows)",
 			"command": "rm",
@@ -38,7 +39,8 @@
 				"${fileDirname}/${fileBasenameNoExtension}.exe"
 			],
 			"group": "build"
-		}, {
+		},
+		{
 			"type": "shell",
 			"label": "编译并运行当前文件(Windows)",
 			"command": "${fileDirname}/${fileBasenameNoExtension}.exe",
@@ -50,13 +52,13 @@
 				"showReuseMessage": false,
 				"clear": true
 			},
-			"args": [
-			],
+			"args": [],
 			"dependsOn": [
 				"编译当前文件(Windows)"
 			],
 			"group": "build"
-		}, {
+		},
+		{
 			"type": "shell",
 			"label": "编译当前文件运行并输入测试数据(Windows)",
 			"presentation": {
@@ -68,13 +70,16 @@
 				"clear": true
 			},
 			"command": "if (Test-Path ${fileDirname}/${fileBasenameNoExtension}.in) {Get-Content ${fileDirname}/${fileBasenameNoExtension}.in | ${fileDirname}/${fileBasenameNoExtension}.exe} else {${fileDirname}/${fileBasenameNoExtension}.exe}; rm ${fileDirname}/${fileBasenameNoExtension}.exe",
-			"args": [
-			],
+			"args": [],
 			"dependsOn": [
 				"编译当前文件(Windows)"
 			],
-			"group": "build"
-		},{
+			"group": "build",
+			"problemMatcher": [
+				"$gcc"
+			]
+		},
+		{
 			"type": "shell",
 			"label": "判题(Windows)",
 			"presentation": {
@@ -86,13 +91,13 @@
 				"clear": false
 			},
 			"command": "rm ${fileDirname}/${fileBasenameNoExtension}.exe",
-			"args": [
-			],
+			"args": [],
 			"dependsOn": [
 				"编译当前文件运行并输入测试数据(Windows)"
 			],
 			"group": "build"
-		}, {
+		},
+		{
 			"type": "shell",
 			"label": "编译当前文件(None-Windows)",
 			"command": "g++",
@@ -109,14 +114,13 @@
 				"$gcc"
 			],
 			"group": "build"
-		},{
+		},
+		{
 			"type": "shell",
 			"label": "运行当前文件",
 			"command": "${fileDirname}/${fileBasenameNoExtension}",
-			"args": [
-			],
-			"dependsOn": [
-			],
+			"args": [],
+			"dependsOn": [],
 			"options": {
 				"cwd": "/usr/bin"
 			},
@@ -124,12 +128,12 @@
 				"$gcc"
 			],
 			"group": "build"
-		},{
+		},
+		{
 			"type": "shell",
 			"label": "删除当前文件可执行文件",
 			"command": "rm ${fileDirname}/${fileBasenameNoExtension}",
-			"args": [
-			],
+			"args": [],
 			"options": {
 				"cwd": "/usr/bin"
 			},
