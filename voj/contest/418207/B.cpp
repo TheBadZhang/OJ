@@ -1,35 +1,40 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
-#include <sstream>
+#include <cctype>
 
+char str[1000005];
+
+bool isyuan (char ch) {
+	return (std::tolower(ch) == 'a' ||
+	        std::tolower(ch) == 'e' ||
+	        std::tolower(ch) == 'i' ||
+	        std::tolower(ch) == 'o' ||
+	        std::tolower(ch) == 'u');
+}
 
 int main () {
-
-	std::string lstr, str;
-	bool flag = false;
-	while (getline(std::cin, lstr)) {
-		std::stringstream ss (lstr);
-		while (ss >> str) {
-			if (std::tolwer(str[0]) == 'a' ||
-			    std::tolwer(str[0]) == 'e' ||
-			    std::tolwer(str[0]) == 'i' ||
-			    std::tolwer(str[0]) == 'o' ||
-			    std::tolwer(str[0]) == 'u') {
+	while (gets (str)) {
+		int s = 0, t = 0;
+		while (str [s]) {
+			if (!std::isalpha(str[s])) {
+				printf ("%c", str[s++]);
+				t = s;
+			} else if (std::isalpha (str[t])) {
+				++t;
 			} else {
-				std::reverse (str.begin(), str.end());
+				if (!isyuan (str[s])) {
+					for (int i = s+1; i < t; ++i) {
+						printf ("%c", str[i]);
+					}
+					printf ("%c", str[s]);
+				} else {
+					for (int i = s; i < t; ++ i) {
+						printf ("%c", str [i]);
+					}
+				}
+				printf ("ay");
+				s = t;
 			}
-			str += "ay";
-			if (flag) {
-				std::cout << " ";
-			}
-			std::cout << str;
-			flag = true;
-
 		}
-		std::cout << std::endl;
+		printf ("\n");
 	}
-
-
-	return 0;
 }
