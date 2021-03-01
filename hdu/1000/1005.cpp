@@ -1,33 +1,34 @@
-#include <iostream>
-
-long long int f (int A, int B, int n) {
-	long long int f1 = 1, f2 = 1, r;
-	if (n == 1) {
-		return 1;
-	} else if (n == 2) {
-		return 1;
-	} else {
-		for (int i = 3; i <= n; ++i) {
-			r = (A*f1+B*f2)%7;
-			f2 = f1;
-			f1 = r;
-			// printf ("r:%lld, f1:%lld, f2:%lld\n", r, f1, f2);
-		}
-	}
-	return r;
-}
-
+#include <cstdio>
+// 本题虽然写起来很简单，但是因为 n 的数值可以取的很大，所以很容易超时
+// 同时，因为这个数据很简单，所以很容易形成循环节，我们可以找出这个循环节
+// 从而减少计算
 int main () {
-
-	int A, B, n;
-	while (std::cin >> A >> B >> n) {
-		if (A==0&&B==0&&n==0) {
-			break;
+	int n = 0, A = 0, B = 0;
+	/// 三个值的输入
+	while (~scanf ("%d %d %d", &A, &B, &n), A||B|n) {
+		// 循环序列，因为最终结果对 7 取余，所以只有 0-6 七种数字，七七四十九种组合
+		int result [50] = {1, 1};
+		// 循环节长度
+		int i;
+		// 计算，直到循环节退出循环
+		for (i = 2; i < 50; ++i) {
+			// 对结果进行计算
+			result [i] = (A*result [i-1] + result [i-2]*B)%7;
+			// 当循环回到初始情况，即另一个循环开始，形成一个循环节
+			// 但其实这个在通用情况下并不严谨，但是在这个数据下是正确的
+			if (result [i] == 1 && result [i-1] == 1) {
+				break;
+			}
 		}
-		printf ("%lld\n", f(A, B, n));
+		// 当前循环节位置
+		int T = i-1;
+		// 根据循环节输出数据
+		if (n%T) {
+			printf ("%d\n", result[n%T-1]);
+		} else {
+			printf ("%d\n", result [T-1]);
+		}
+
 	}
-
-
-
 	return 0;
 }
