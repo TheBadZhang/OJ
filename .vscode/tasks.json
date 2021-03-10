@@ -4,7 +4,7 @@
 		{
 			"type": "shell",
 			"label": "编译当前文件(Windows)",
-			"command": "g++",
+			"command": "gcc",
 			"presentation": {
 				"echo": false,
 				"reveal": "always",
