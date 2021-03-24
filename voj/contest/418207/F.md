@@ -8,9 +8,8 @@ n%10, if (n%10) > 0
 F(n/10), Otherwise
 $$
 Lets define another function $S(p, q)$,
-$S(p, q) = \sum{q}$
-$i=p$
-$F(i)$
+$$S(p, q) = \sum^q_{i=p}{F(i)}$$
+
 In this problem you have to Calculate $S(p, q)$ on given value of p and q.
 ## Input
 The input file contains several lines of inputs. Each line contains two non negative integers $p$ and $q$

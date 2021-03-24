@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "algorithm": "cpp",
+        "ostream": "cpp"
+    },
+    "workbench.editor.wrapTabs": true,
+    "editor.accessibilitySupport": "off",
+    "editor.wordWrap": "bounded",
+    "html.format.wrapLineLength": 160,
+    "editor.wordWrapColumn": 150
+}
