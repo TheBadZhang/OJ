@@ -1,7 +1,8 @@
 {
     "files.associations": {
         "algorithm": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "sstream": "cpp"
     },
     "workbench.editor.wrapTabs": true,
     "editor.accessibilitySupport": "off",
