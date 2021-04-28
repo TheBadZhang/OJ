@@ -2,7 +2,9 @@
     "files.associations": {
         "algorithm": "cpp",
         "ostream": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "string.h": "c",
+        "6048.C": "cpp"
     },
     "workbench.editor.wrapTabs": true,
     "editor.accessibilitySupport": "off",
