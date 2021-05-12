@@ -1,18 +1,16 @@
 #include <stdio.h>
 
 int search (int* list, int size, int d) {
-	int i = 1, j = size, m;      // 二分搜索查找插入的位置
-	while (i <= j) {
-		m = (i+j)/2;
-		if (d == list [m-1]) {
-			return i;
-		} else if (d < list [m-1]) {
-			j = m - 1;
+	int start = 0, end = size, mid;      // 二分搜索查找插入的位置
+	while (start <= end) {
+		mid = (start+end)/2;
+		if (d <= list [mid]) {
+			end = mid - 1;
 		} else {
-			i = m + 1;
+			start = mid + 1;
 		}
 	}
-	return j;
+	return start;
 }
 
 void moveRight (int* list, int size, int pos) {

@@ -1,35 +1,54 @@
 #include <stdio.h>
-#include <string.h>
-#include <ctype.h>
 
-int hex2oct (char ch) {
-	int number;
-	if (isdigit (ch)) {
-		number = ch - '0';
-	} else {
-		number = ch - 'A' + 10;
+int m,n,i,j;
+int v[200][200] = {0};
+
+int max (int ms) {
+	int ii, max = 0;
+	for (ii = 0; ii < n; ii++) {
+		if (v[ms][ii] > v[ms][max]) {
+			max = ii;
+		}
 	}
-	return number;
+	return max;
+}
+
+int min (int ns) {
+	int ii, min = 0;
+	for (ii = 0; ii < m; ii++) {
+		if (v[ii][ns] < v[min][ns]) {
+			min = ii;
+		}
+	}
+	return min;
+}
+
+int isAn (int ms, int ns) {
+	if (min(ns) == ms && max(ms) == ns) return 1;
+	else return 0;
 }
 
 int main () {
-
-	char str[10];
-	
-	while (~scanf ("%s", str)) {
-		int number = 0;
-		int negtive = 1;
-		int i, s = 0, size = strlen (str);
-		if (str[0] == '-') {
-			negtive = -1;
-			s = 1;
+	while (~scanf ("%d %d", &m, &n)) {
+		int count = 0;
+		for (i = 0; i < m; i++) {
+			for (j = 0; j < n; j++) {
+				scanf ("%d", &v[i][j]);
+			}
 		}
-		for (i = s; i < size; i++) {
-			number *= 16;
-			number += hex2oct (str[i]);
+		for (i = 0; i < m; i++) {
+			for (j = 0; j < n; j++) {
+				if (isAn (i, j)) {
+					printf ("%d %d %d\n", v[i][j], i, j);
+					count ++;
+				}
+			}
 		}
-		printf ("%d\n", number * negtive);
+		if (count == 0) {
+			printf ("Not\n");
+		}
 	}
+
 
 	return 0;
 }
