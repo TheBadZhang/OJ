@@ -1,0 +1,11 @@
+3
+In this paper, a new sort method of Kway insertion is put forward.
+and its algorithmic ideas, and algorithmic description,
+and its algorithmic analysis, and its experimental results is given. 
+6
+The theoretical significance lies has the sort
+time complexity is nlogn,
+and it has nothing to do with data type and number range.
+Its practical value is the sorting more efficiency,
+the average sorting speed is quicker times
+then straight insertion sort and quicker then shell sort.

@@ -3,42 +3,33 @@
 int m,n,i,j;
 int v[200][200] = {0};
 
-int max (int ms) {
-	int ii, max = 0;
-	for (ii = 0; ii < n; ii++) {
-		if (v[ms][ii] > v[ms][max]) {
-			max = ii;
-		}
-	}
-	return max;
-}
-
-int min (int ns) {
-	int ii, min = 0;
+int max_min (int ns, int ms) {
+	int ii, flag = 1;
 	for (ii = 0; ii < m; ii++) {
-		if (v[ii][ns] < v[min][ns]) {
-			min = ii;
+		if (v[ns][ii] > v[ns][ms]) {
+			flag = 0;
 		}
 	}
-	return min;
+	for (ii = 0; ii < n; ii++) {
+		if (v[ii][ms] < v[ns][ms]) {
+			flag = 0;
+		}
+	}
+	return flag;
 }
 
-int isAn (int ms, int ns) {
-	if (min(ns) == ms && max(ms) == ns) return 1;
-	else return 0;
-}
 
 int main () {
-	while (~scanf ("%d %d", &m, &n)) {
+	while (~scanf ("%d %d", &n, &m)) {
 		int count = 0;
-		for (i = 0; i < m; i++) {
-			for (j = 0; j < n; j++) {
+		for (i = 0; i < n; i++) {
+			for (j = 0; j < m; j++) {
 				scanf ("%d", &v[i][j]);
 			}
 		}
-		for (i = 0; i < m; i++) {
-			for (j = 0; j < n; j++) {
-				if (isAn (i, j)) {
+		for (i = 0; i < n; i++) {
+			for (j = 0; j < m; j++) {
+				if (max_min (i, j)) {
 					printf ("%d %d %d\n", v[i][j], i, j);
 					count ++;
 				}
