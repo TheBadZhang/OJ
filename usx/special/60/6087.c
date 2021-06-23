@@ -10,11 +10,7 @@ int main () {
 		char name[80], maxname[80], num[80];
 		for (i = 0; i < n; i++) {
 			scanf ("%s %s %d\n", num, name, &score);
-			if (i == 0) {
-				maxscore = score;
-				strcpy (maxname, name);
-			}
-			if (score > maxscore) {
+			if (i == 0 || score > maxscore) {
 				strcpy (maxname, name);
 				maxscore = score;
 			}
