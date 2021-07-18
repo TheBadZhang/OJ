@@ -19,7 +19,8 @@ int main () {
 				else if (ispunct (str[j])) sign ++;
 			}
 		}
-		printf ("lowercase=%d capital=%d space=%d sign=%d\n", lowercase, capital, space, sign);
+		printf ("lowercase=%d capital=%d space=%d sign=%d\n",
+			lowercase, capital, space, sign);
 	}
 
 
