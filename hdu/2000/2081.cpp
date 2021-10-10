@@ -8,11 +8,10 @@ using namespace std;
 const int N = 11;
 char a[N + 1];
 
-int main()
-{
+int main() {
 	int n;
 	scanf("%d", &n);
-	while(n--) {
+	while (n--) {
 		scanf("%s", a);
 
 		printf("6%s\n", a + 6);

@@ -1,0 +1,44 @@
+---
+BasedOnStyle: Google
+
+###################################
+#           缩进配置
+###################################
+UseTab: Always
+IndentWidth: 4
+TabWidth: 4
+BreakBeforeBraces: Allman
+ColumnLimit: 0
+AccessModifierOffset: -4
+NamespaceIndentation: All
+FixNamespaceComments: false
+
+###################################
+#          其他样式选项
+###################################
+
+# 允许短的 if 语句保持在同一行
+AllowShortIfStatementsOnASingleLine: true
+
+# 允许短的循环保持在同一行
+AllowShortLoopsOnASingleLine: true
+
+# 允许短的块保持在同一行
+AllowShortBlocksOnASingleLine: true
+
+# 缩进 case 标签
+IndentCaseLabels: true
+
+# 允许排序 #include
+SortIncludes: false
+
+# 对齐宏定义
+# AlignConsecutiveMacros: AcrossEmptyLinesAndComments
+BreakBeforeBraces: Custom
+Cpp11BracedListStyle:	false
+BraceWrapping:
+  AfterEnum: true
+  AfterStruct: false
+  SplitEmptyFunction: false
+  AfterFunction: false
+  AfterNamespace: false
