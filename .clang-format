@@ -1,5 +1,5 @@
 ---
-BasedOnStyle: Google
+BasedOnStyle: Chromium
 
 ###################################
 #           缩进配置
@@ -17,6 +17,14 @@ FixNamespaceComments: false
 #          其他样式选项
 ###################################
 
+# 对齐连续的尾随的注释
+AlignTrailingComments: true
+# 允许函数声明的所有参数在放在下一行
+AllowAllParametersOfDeclarationOnNextLine: true
+# 允许短的块放在同一行
+AllowShortBlocksOnASingleLine: true
+# 允许短的case标签放在同一行
+AllowShortCaseLabelsOnASingleLine: false
 # 允许短的 if 语句保持在同一行
 AllowShortIfStatementsOnASingleLine: true
 

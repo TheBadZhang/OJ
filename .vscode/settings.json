@@ -56,11 +56,13 @@
         "utility": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "initializer_list": "cpp"
     },
     "workbench.editor.wrapTabs": true,
     "editor.accessibilitySupport": "off",
     "editor.wordWrap": "bounded",
     "html.format.wrapLineLength": 160,
-    "editor.wordWrapColumn": 150
+    "editor.wordWrapColumn": 150,
+    "C_Cpp.clang_format_fallbackStyle": "Chromium"
 }
