@@ -26,19 +26,28 @@ inline ll _pow(ll a, ll b) {
 	return _
 }*/
 
+const int N = 2e5+10;
+ll a[N];
 
 int main () {
 
-	int t, a[200];
+	int t;
 	cin >> t;
 	while (t--) {
 		int n = read();
+		int count = 0;
 		FOR(i,1,n) a[i] = read();
-		ll r = a[1];
-		FOR(i,2,n) r|= a[i];
-		cout << r << endl;
+		a[n+1] = 10000000000;
+		FOR0(i,2,n) {
+			if (a[i] > a[i-1] && a[i] > a[i+1]) {  // local maximums
+				a[i+1] = max(a[i], a[i+2]);
+				count ++;
+			}
+		}
+		printf ("%d\n%lld", count, a[1]);
+		FOR(i,2,n) printf (" %lld", a[i]);
+		puts("");
 	}
-
 
 	return 0;
 }
