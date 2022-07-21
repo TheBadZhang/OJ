@@ -7,3 +7,6 @@
 *.bmp
 
 *.exe
+.vscode/dryrun.log
+.vscode/targets.log
+.vscode/configurationCache.log
