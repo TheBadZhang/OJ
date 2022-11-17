@@ -7,7 +7,7 @@ const int N = 50000;
 struct segments {
 	int l, r, c, o;
 	friend bool operator<(segments& a, segments& b) {
-		return (a.r-a.l) >
+		return (a.r-a.l) > (b.r-b.l);
 	}
 } ss;
 
